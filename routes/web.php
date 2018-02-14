@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/actors', 'ActorsController@index')->name('actors');
+
+Auth::routes();
+
