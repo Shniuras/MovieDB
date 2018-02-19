@@ -1,4 +1,4 @@
-@include('header')
+@include('header', ['title' => 'HOME|MOVIEDB'])
     <!-- Main -->
     <div id="main">
         <!-- Content -->

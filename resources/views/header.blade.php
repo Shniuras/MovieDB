@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-    <title>MOVIE DB</title>
+    <title>{{$title}}</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="{{URL::asset('css/ThemeCSS/style.css')}}" type="text/css" media="all" />
     <!--[if IE 6]>
@@ -33,6 +33,9 @@
                 <li><a href="{{route('actors')}}">ACTORS</a></li>
                 <li><a href="#">MOVIE</a></li>
                 <li><a href="#">CATEGORIES</a></li>
+                <li><a href="{{route('add')}}">ADD ACTOR</a></li>
+                <li><a href="#">ADD MOVIE</a></li>
+                <li><a href="#">ADD CATEGORY</a></li>
             </ul>
         </div>
         <!-- end Navigation -->
