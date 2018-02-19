@@ -8,33 +8,26 @@
             <!-- Box -->
             <div class="box">
                 <div class="head">
-                    <h2>ALL ACTORS</h2>
                     <p class="text-right"><a href="#">See all</a></p>
                 </div>
 
                 <!-- Movie -->
-                @foreach($show as $s)
+                @foreach($showActors as $sA)
                 <div class="movie">
-
                     <div class="movie-image">
+                        <a href="{{route('single',$sA->id)}}">{{$sA->name}}</a>
 
-                        <a href="{{route('single')}}"><span class="play"><span class="name">{{$s->name}}</span></span><img src="{{URL::asset('css/ThemeCSS/images/actor1.jpg')}}" alt="movie" /></a>
+
                     </div>
-
-                    <div class="rating">
-                        <p>RATING</p>
-                        <div class="stars">
-                            <div class="stars-in">
-
-                            </div>
-                        </div>
-                        <span class="comments">12</span>
-                    </div>
+                    <a href="{{route('delete',$sA->id)}}">Delete</a>
+                    <a href="{{route('edit',$sA->id)}}">Edit</a>
                 </div>
-                @endforeach
+
+
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
             </div>
+        @endforeach
             <!-- end Box -->
         </div>
         <!-- end Content -->

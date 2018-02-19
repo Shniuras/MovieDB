@@ -17,7 +17,6 @@
 
                 <div class="movie-image">
 
-                    <span class=""></span><img src="{{URL::asset('css/ThemeCSS/images/actor1.jpg')}}" />
                 </div>
 
             </div>
@@ -26,8 +25,8 @@
 
                 <div class="movie-image">
 
-                    <p>Name:  {{$single->name}}</p>
-                    <p>Birthday: {{$single->birthday}}</p>
+                    <p>Name:  {{$showSingle->name}}</p>
+                    <p>Birthday: {{$showSingle->birthday}}</p>
                     <p>Movies: </p>
 
                 </div>

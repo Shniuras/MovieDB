@@ -4,19 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Actor extends Model
+class Image extends Model
 {
     public $timestamps = false;
     public $fillable = [
-        'name',
-        'birthday',
-        'user_id'
+        'filename',
+        'user_id',
+        'imagable_id',
+        'imagable_type'
     ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imagable');
+    public function actor(){
+        return $this->belongsTo(Actor::class);
     }
 }

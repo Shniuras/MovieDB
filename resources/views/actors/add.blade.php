@@ -1,9 +1,9 @@
 @include('header', ['title' => 'ADD|MOVIEDB'])
-<form action="{{route('store')}}" method="post">
+<form action="{{route('store')}}" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
     <input type="text" name="name">
     <input type="date" name="birthday">
-    <input type="text" name="user_id">
+    {{--<input type="file" name="file">--}}
     <input type="submit">
 </form>
 @include('footer')

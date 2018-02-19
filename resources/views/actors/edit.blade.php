@@ -1,4 +1,4 @@
-@include('header', ['title' => 'SINGLE|MOVIEDB'])
+@include('header',['title' => 'EDIT|MOVIEDB'])
 
 <!-- Main -->
 <div id="main">
@@ -14,31 +14,16 @@
 
             <!-- Movie -->
             <div class="movie">
-
                 <div class="movie-image">
-
-                    <span class=""></span><img src="{{URL::asset('css/ThemeCSS/images/actor1.jpg')}}" />
-                </div>
-
-            </div>
-
-            <div class="movie">
-
-                <div class="movie-image">
-
-                    <p>Name:  {{$single->name}}</p>
-                    <p>Birthday: {{$single->birthday}}</p>
-                    <p>Movies: </p>
-
+                    <form action="{{route('update',$edit->id)}}" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="text" name="name" value="{{$edit->name}}">
+                        <input type="text" name="birthday" value="{{$edit->birthday}}">
+                        <input type="submit">
+                    </form>
                 </div>
             </div>
             <!-- end Movie -->
-
-
-
-
-
-            <div class="cl">&nbsp;</div>
         </div>
         <!-- end Box -->
     </div>

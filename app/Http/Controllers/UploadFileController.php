@@ -8,7 +8,7 @@ class UploadFileController extends Controller
 {
     public function update(Request $request)
     {
-        $path = $request->file('avatar')->store('avatars');
+        $path = $request->file('file')->storePublicly('storage');
         return $path;
     }
 }

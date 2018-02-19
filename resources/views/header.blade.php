@@ -31,10 +31,10 @@
             <ul>
                 <li><a class="active" href="{{route('index')}}">HOME</a></li>
                 <li><a href="{{route('actors')}}">ACTORS</a></li>
-                <li><a href="#">MOVIE</a></li>
+                <li><a href="{{route('movies')}}">MOVIES</a></li>
                 <li><a href="#">CATEGORIES</a></li>
-                <li><a href="{{route('add')}}">ADD ACTOR</a></li>
-                <li><a href="#">ADD MOVIE</a></li>
+                <li><a href="">ADD ACTOR</a></li>
+                <li><a href="{{route('addMovie')}}">ADD MOVIE</a></li>
                 <li><a href="#">ADD CATEGORY</a></li>
             </ul>
         </div>
