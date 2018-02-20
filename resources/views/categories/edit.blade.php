@@ -15,12 +15,10 @@
             <!-- Movie -->
             <div class="movie">
                 <div class="movie-image">
-                    <form action="{{route('updateMovie',$editMovie->id)}}" method="post">
+                    <form action="{{route('updateCategory',$editCategory->id)}}" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <input type="text" name="name" value="{{$editMovie->name}}">
-                        <input type="text" name="description" value="{{$editMovie->description}}">
-                        <input type="text" name="year" value="{{$editMovie->year}}">
-                        <input type="text" name="rating" value="{{$editMovie->rating}}">
+                        <input type="text" name="name" value="{{$editCategory->name}}">
+                        <input type="text" name="description" value="{{$editCategory->description}}">
                         <input type="submit">
                     </form>
                 </div>

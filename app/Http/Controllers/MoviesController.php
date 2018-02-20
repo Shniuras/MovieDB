@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Actor;
+use App\Category;
 use App\Http\Requests\StoreMovieRequest;
 use App\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Auth;
 
 class MoviesController extends Controller
@@ -16,17 +19,46 @@ class MoviesController extends Controller
 
     public function single($id){
         $showSingle = Movie::findOrFail($id);
-        return view('movies.single',['showSingle' => $showSingle]);
+        $showCategory = $showSingle->category;
+        $showActors = $showSingle->actors;
+        return view('movies.single',['showSingle' => $showSingle, 'showCategory' => $showCategory, 'showActors' => $showActors]);
     }
 
     public function add(){
-        return view('movies.add');
+        $showCategories = Category::all();
+        $showActors = Actor::all();
+        return view('movies.add',['showCategories' => $showCategories, 'showActors' => $showActors]);
     }
 
     public function store(StoreMovieRequest $request){
         $user = Auth::user();
-        $user->movies()->create($request->except('_token'));
-        return redirect()->route('movies.index');
+        $actor_movie = $user->movies()->create($request->except('_token'));
+        $actor_movie->actors()->attach($request->actor_id);
+        return redirect()->route('movies');
     }
+
+    public function delete($id){
+        $delete = Movie::findOrFail($id);
+        $delete->actors()->sync([]);
+        $delete->delete();
+        return redirect()->route('movies');
+    }
+
+    public function edit($id){
+        $editMovie = Movie::findOrFail($id);
+        return view('movies.edit',['editMovie' => $editMovie]);
+    }
+
+    public function update(StoreMovieRequest $request, $id){
+        $edit = Movie::findOrFail($id);
+        $edit->name = $request->get('name');
+        $edit->description = $request->get('description');
+        $edit->rating = $request->get('rating');
+        $edit->year = $request->get('year');
+        $edit->save();
+        return redirect()->route('editMovie',$id);
+    }
+
+
 
 }

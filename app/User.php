@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function movies(){
         return $this->hasMany(Movie::class);
     }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
 }

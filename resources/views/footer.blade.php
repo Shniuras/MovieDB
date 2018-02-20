@@ -15,6 +15,7 @@
 </div>
 <!-- end Footer -->
 </div>
+<script src="{{URL::asset('js/multyselect.js')}}" type="text/javascript"></script>
 <!-- end Shell -->
 </body>
 </html>

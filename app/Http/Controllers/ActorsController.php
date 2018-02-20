@@ -24,7 +24,7 @@ class ActorsController extends Controller
 //        Actor::create($request->all());
 //        Image::create($request->file('file')->storePublicly('storage'));
         $user = Auth::user();
-        $actor = $user->actors()->create($request->except('_token'));
+        $user->actors()->create($request->except('_token'));
 //        $actor->images()->create(['filename' => $request->file('file')->storePublicly('public'), 'user_id' => $user->id]);
         return redirect()->route('actors');
     }
@@ -50,7 +50,7 @@ class ActorsController extends Controller
         $edit->birthday = $request->get('birthday');
         $edit->save();
 
-        return redirect()->route('actors');
+        return redirect()->route('editActor',$id);
     }
 
 }

@@ -4,24 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Actor extends Model
+class Category extends Model
 {
     public $timestamps = false;
     public $fillable = [
+        'id',
         'name',
-        'birthday',
+        'description',
         'user_id'
     ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imagable');
+    public function movies(){
+        return $this->hasMany(Movie::class);
     }
 
-    public function movies()
-    {
-        return $this->belongsToMany(Movie::class);
-    }
+
 }

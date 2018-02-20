@@ -15,12 +15,12 @@
                 @foreach($showActors as $sA)
                 <div class="movie">
                     <div class="movie-image">
-                        <a href="{{route('single',$sA->id)}}">{{$sA->name}}</a>
+                        <a href="{{route('singleActor',$sA->id)}}">{{$sA->name}}</a>
 
 
                     </div>
-                    <a href="{{route('delete',$sA->id)}}">Delete</a>
-                    <a href="{{route('edit',$sA->id)}}">Edit</a>
+                    <a href="{{route('deleteActor',$sA->id)}}">Delete</a>
+                    <a href="{{route('editActor',$sA->id)}}">Edit</a>
                 </div>
 
 

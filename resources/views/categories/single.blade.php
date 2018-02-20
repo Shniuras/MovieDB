@@ -25,13 +25,8 @@
 
                 <div class="movie-image">
 
-                    <p>Name:  {{$showSingle->name}}</p>
-                    <p>Year: {{$showSingle->year}}</p>
-                    <p>Description: {{$showSingle->description}}</p>
-                    <p>Rating: {{$showSingle->rating}}</p>
-                    <p>Category: {{$showCategory->name}}</p>
-                    <p>Actors: @foreach($showActors as $sA){{$sA->name . " "}}@endforeach</p>
-
+                    <p>Name:  {{$showCategory->name}}</p>
+                    <p>Description: {{$showCategory->description}}</p>
 
                 </div>
             </div>

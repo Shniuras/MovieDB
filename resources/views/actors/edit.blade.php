@@ -15,7 +15,7 @@
             <!-- Movie -->
             <div class="movie">
                 <div class="movie-image">
-                    <form action="{{route('update',$edit->id)}}" method="post">
+                    <form action="{{route('updateActor',$edit->id)}}" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="text" name="name" value="{{$edit->name}}">
                         <input type="text" name="birthday" value="{{$edit->birthday}}">

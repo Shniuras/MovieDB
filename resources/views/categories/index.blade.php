@@ -1,4 +1,4 @@
-@include('header', ['title' => 'MOVIES|MOVIEDB'])
+@include('header', ['title' => 'CATEGORIES|MOVIEDB'])
 
 <!-- Main -->
 <div id="main">
@@ -12,13 +12,13 @@
             </div>
 
             <!-- Movie -->
-            @foreach($showMovies as $sM)
+            @foreach($showCategories as $sC)
                 <div class="movie">
                     <div class="movie-image">
-                        <a href="{{route('singleMovie',$sM->id)}}">{{$sM->name}}</a>
+                        <a href="{{route('singleCategory',$sC->id)}}">{{$sC->name}}</a>
                     </div>
-                    <a href="{{route('deleteMovie',$sM->id)}}">Delete</a>
-                    <a href="{{route('editMovie',$sM->id)}}">Edit</a>
+                    <a href="{{route('deleteCategory',$sC->id)}}">Delete</a>
+                    <a href="{{route('editCategory', $sC->id)}}">Edit</a>
                 </div>
 
 
