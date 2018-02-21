@@ -19,6 +19,13 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="text" name="name" value="{{$edit->name}}">
                         <input type="text" name="birthday" value="{{$edit->birthday}}">
+                        @foreach($showMovies as $sM)
+                            @if($editMovie->contains($sM))
+                                <input type="checkbox" checked name="movie_id[]" value="{{$sM->id}}">{{$sM->name}}
+                            @else
+                                <input type="checkbox" name="movie_id[]" value="{{$sM->id}}">{{$sM->name}}
+                            @endif
+                        @endforeach
                         <input type="submit">
                     </form>
                 </div>

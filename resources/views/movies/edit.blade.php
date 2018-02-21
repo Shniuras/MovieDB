@@ -21,6 +21,28 @@
                         <input type="text" name="description" value="{{$editMovie->description}}">
                         <input type="text" name="year" value="{{$editMovie->year}}">
                         <input type="text" name="rating" value="{{$editMovie->rating}}">
+                        <p>Categories:</p>
+                        <select name="category_id">
+                        @foreach($showCategories as $sC)
+                            @if($editCategory->select($sC))
+                                <option selected value="{{$sC->id}}">{{$sC->name}}</option>
+                                <br>
+                            @else
+                                <option value="{{$sC->id}}">{{$sC->name}}</option>
+                                <br>
+                            @endif
+                        @endforeach
+                        </select>
+                        <p>Actors:</p>
+                        @foreach($showActors as $sA)
+                            @if($editActor->contains($sA))
+                                <input type="checkbox" checked name="actor_id[]" value="{{$sA->id}}">{{$sA->name}}
+                                <br>
+                            @else
+                                <input type="checkbox"  name="actor_id[]" value="{{$sA->id}}">{{$sA->name}}
+                                <br>
+                            @endif
+                        @endforeach
                         <input type="submit">
                     </form>
                 </div>

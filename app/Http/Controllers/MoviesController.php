@@ -46,7 +46,11 @@ class MoviesController extends Controller
 
     public function edit($id){
         $editMovie = Movie::findOrFail($id);
-        return view('movies.edit',['editMovie' => $editMovie]);
+        $showCategories = Category::all();
+        $editCategories = $editMovie->category;
+        $showActors = Actor::all();
+        $editActors = $editMovie->actors;
+        return view('movies.edit',['editMovie' => $editMovie, 'showCategories' => $showCategories, 'editCategory' => $editCategories, 'showActors' => $showActors,  'editActor' => $editActors]);
     }
 
     public function update(StoreMovieRequest $request, $id){
@@ -55,6 +59,9 @@ class MoviesController extends Controller
         $edit->description = $request->get('description');
         $edit->rating = $request->get('rating');
         $edit->year = $request->get('year');
+        $edit->category_id = $request->get('category_id');
+        $actorId = $request->get('actor_id');
+        $edit->actors()->sync($actorId);
         $edit->save();
         return redirect()->route('editMovie',$id);
     }

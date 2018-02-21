@@ -29,7 +29,6 @@
         <!-- Navigation -->
         <div id="navigation">
             <ul>
-                <li><a class="active" href="{{route('index')}}">HOME</a></li>
                 <li><a href="{{route('actors')}}">ACTORS</a></li>
                 <li><a href="{{route('movies')}}">MOVIES</a></li>
                 <li><a href="{{route('categories')}}">CATEGORIES</a></li>

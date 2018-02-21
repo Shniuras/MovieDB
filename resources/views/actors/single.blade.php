@@ -28,7 +28,7 @@
 
                     <p>Name:  {{$single->name}}</p>
                     <p>Birthday: {{$single->birthday}}</p>
-                    <p>Movies: </p>
+                    <p>Movies: @foreach($showMovies as $sM){{$sM->name . " "}}@endforeach </p>
 
                 </div>
             </div>
