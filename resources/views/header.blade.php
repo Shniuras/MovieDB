@@ -15,7 +15,6 @@
 <div id="shell">
     <!-- Header -->
     <div id="header">
-        <h1 id="logo"><a href="#">Movie Hunter</a></h1>
         <div class="social">
             <span>FOLLOW US ON:</span>
             <ul>
@@ -32,9 +31,13 @@
                 <li><a href="{{route('actors')}}">ACTORS</a></li>
                 <li><a href="{{route('movies')}}">MOVIES</a></li>
                 <li><a href="{{route('categories')}}">CATEGORIES</a></li>
+                @auth
+                <li><a href="{{route('users')}}">USERS</a></li>
+                <li><a href="{{route('addUser')}}">ADD USER</a></li>
                 <li><a href="{{route('addActor')}}">ADD ACTOR</a></li>
                 <li><a href="{{route('addMovie')}}">ADD MOVIE</a></li>
                 <li><a href="{{route('addCategory')}}">ADD CATEGORY</a></li>
+                @endauth
             </ul>
         </div>
         <!-- end Navigation -->

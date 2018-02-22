@@ -12,18 +12,16 @@
             </div>
 
             <!-- Movie -->
-            @foreach($showMovies as $sM)
+            @foreach($showUsers as $sU)
                 <div class="movie">
                     <div class="movie-image">
-                        <a href="{{route('singleMovie',$sM->id)}}">{{$sM->name}}</a>
+                        <a href="{{route('singleUser',$sU->id)}}">
+                            {{$sU->name}}
+                        </a>
                     </div>
-                    @auth
-                    <a href="{{route('deleteMovie',$sM->id)}}">Delete</a>
-                    <a href="{{route('editMovie',$sM->id)}}">Edit</a>
-                        @endauth
+                    <a href="{{route('deleteUser',$sU->id)}}">Delete</a>
+                    <a href="{{route('editUser',$sU->id)}}">Edit</a>
                 </div>
-
-
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
         </div>

@@ -17,8 +17,10 @@
                     <div class="movie-image">
                         <a href="{{route('singleCategory',$sC->id)}}">{{$sC->name}}</a>
                     </div>
+                    @auth
                     <a href="{{route('deleteCategory',$sC->id)}}">Delete</a>
                     <a href="{{route('editCategory', $sC->id)}}">Edit</a>
+                        @endauth
                 </div>
 
 

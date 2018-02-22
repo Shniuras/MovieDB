@@ -19,8 +19,10 @@
 
 
                     </div>
+                    @auth
                     <a href="{{route('deleteActor',$sA->id)}}">Delete</a>
                     <a href="{{route('editActor',$sA->id)}}">Edit</a>
+                        @endauth
                 </div>
 
 
