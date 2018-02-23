@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class ActorsController extends Controller
 {
     public function index(){
-        $showActors = Actor::paginate(5);
-        $showImages = Image::all();
-        return view ('actors.index', ['showActors' => $showActors, 'showImages' => $showImages] );
+        $actors = Auth::user();
+        $showActors = $actors->actors;
+//        foreach($showActors as $sA){
+//            $s = $sA->images->first()->filename;
+//            dd($s);
+//        }
+
+        return view ('actors.index', ['showActors' => $showActors] );
     }
 
     public function add(){
@@ -28,13 +33,15 @@ class ActorsController extends Controller
         $user = Auth::user();
         $actor_movie = $user->actors()->create($request->except('_token'));
         $actor_movie->movies()->attach($request->movie_id);
-//        $actor->images()->create(['filename' => $request->file('file')->storePublicly('public'), 'user_id' => $user->id]);
+        $actor_movie->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
         return redirect()->route('actors');
     }
 
     public function single($id){
         $single = Actor::findOrFail($id);
         $showMovies = $single->movies;
+        $showImage = $single->images;
+//        dd($showImage);
         return view('actors.single',['single' => $single, 'showMovies' => $showMovies]);
     }
 

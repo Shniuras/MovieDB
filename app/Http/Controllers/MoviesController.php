@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 class MoviesController extends Controller
 {
     public function index(){
-        $showMovies = Movie::paginate(5);
+        $movies = Auth::user();
+        $showMovies = $movies->movies;
         return view('movies.index',['showMovies' => $showMovies]);
     }
 
@@ -34,6 +35,7 @@ class MoviesController extends Controller
         $user = Auth::user();
         $actor_movie = $user->movies()->create($request->except('_token'));
         $actor_movie->actors()->attach($request->actor_id);
+        $actor_movie->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
         return redirect()->route('movies');
     }
 

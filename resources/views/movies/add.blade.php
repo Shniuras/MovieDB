@@ -8,7 +8,7 @@
     <select name="category_id">@foreach($showCategories as $sC)<option value="{{$sC->id}}"> {{$sC->name}} </option>@endforeach</select>
     @foreach($showActors as $sA)<input type="checkbox" name="actor_id[]" value="{{$sA->id}}">{{$sA->name}}@endforeach
 
-    {{--<input type="file" name="file">--}}
+    <input type="file" name="file">
     <input type="submit">
 </form>
 @include('footer')

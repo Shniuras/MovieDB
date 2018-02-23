@@ -16,12 +16,12 @@ class Actor extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function images(){
-        return $this->morphMany(Image::class, 'imagable');
-    }
-
     public function movies()
     {
         return $this->belongsToMany(Movie::class);
+    }
+
+    public function images(){
+        return $this->morphMany(Image::class, 'imagable');
     }
 }

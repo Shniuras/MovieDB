@@ -19,6 +19,6 @@ class Image extends Model
     }
 
     public function actor(){
-        return $this->belongsTo(Actor::class);
+        return $this->morphTo();
     }
 }

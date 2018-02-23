@@ -26,4 +26,8 @@ class Movie extends Model
     public function actors(){
         return $this->belongsToMany(Actor::class, 'actor_movie');
     }
+
+    public function images(){
+        return $this->morphMany(Image::class, 'imagable');
+    }
 }

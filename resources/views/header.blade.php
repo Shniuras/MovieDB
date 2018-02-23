@@ -38,6 +38,8 @@
                 <li><a href="{{route('addMovie')}}">ADD MOVIE</a></li>
                 <li><a href="{{route('addCategory')}}">ADD CATEGORY</a></li>
                 @endauth
+                <li><a href="{{route('login')}}">LOGIN</a></li>
+                <li><a href="{{route('logout')}}">LOGOUT</a></li>
             </ul>
         </div>
         <!-- end Navigation -->

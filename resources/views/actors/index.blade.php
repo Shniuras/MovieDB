@@ -15,21 +15,19 @@
                 @foreach($showActors as $sA)
                 <div class="movie">
                     <div class="movie-image">
-                        <a href="{{route('singleActor',$sA->id)}}">{{$sA->name}}</a>
-
-
+                        <a href="{{route('singleActor',$sA->id)}}">
+                            <img src="{{URL::asset('storage/' . $sA->images()->first()->filename)}}" />
+                            {{$sA->name}}
+                        </a>
                     </div>
-                    @auth
-                    <a href="{{route('deleteActor',$sA->id)}}">Delete</a>
-                    <a href="{{route('editActor',$sA->id)}}">Edit</a>
-                        @endauth
                 </div>
+                @endforeach
 
 
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
             </div>
-        @endforeach
+
             <!-- end Box -->
         </div>
         <!-- end Content -->
