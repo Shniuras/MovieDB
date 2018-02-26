@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Actor;
 use App\Http\Requests\StoreActorRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Image;
 use App\Movie;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ActorsController extends Controller
 {
     public function index(){
-        $actors = Auth::user();
-        $showActors = $actors->actors;
+        $showActors = Actor::all();
 //        foreach($showActors as $sA){
 //            $s = $sA->images->first()->filename;
 //            dd($s);
@@ -37,12 +38,19 @@ class ActorsController extends Controller
         return redirect()->route('actors');
     }
 
+    public function storePicture(StoreUserRequest $request, $id)
+    {
+        $user = Auth::user();
+        $actor = Actor::findOrFail($id);
+        $actor->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
+        return redirect()->route('actors');
+    }
+
     public function single($id){
         $single = Actor::findOrFail($id);
         $showMovies = $single->movies;
         $showImage = $single->images;
-//        dd($showImage);
-        return view('actors.single',['single' => $single, 'showMovies' => $showMovies]);
+        return view('actors.single',['single' => $single, 'showMovies' => $showMovies, 'showImages' => $showImage]);
     }
 
     public function delete($id){
@@ -56,7 +64,8 @@ class ActorsController extends Controller
         $edit = Actor::findOrFail($id);
         $showMovies = Movie::all();
         $editMovie = $edit->movies;
-        return view('actors.edit', ['edit' => $edit, 'showMovies' => $showMovies, 'editMovie' => $editMovie]);
+        $editImage = $edit->images;
+        return view('actors.edit', ['edit' => $edit, 'showMovies' => $showMovies, 'editMovie' => $editMovie, 'editImage' => $editImage]);
     }
 
     public function update(StoreActorRequest $request, $id){

@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class MoviesController extends Controller
 {
     public function index(){
-        $movies = Auth::user();
-        $showMovies = $movies->movies;
+        $showMovies = Movie::all();
         return view('movies.index',['showMovies' => $showMovies]);
     }
 

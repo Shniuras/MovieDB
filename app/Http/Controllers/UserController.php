@@ -33,6 +33,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $showUser = User::findOrFail($id);
-        return view('users.edit',['showUser' => $showUser]);
+        $showRole = User::all();
+        return view('users.edit',['showUser' => $showUser, 'showRole' => $showRole]);
     }
 }

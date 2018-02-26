@@ -22,10 +22,10 @@
                     <a href="{{route('deleteUser',$sU->id)}}">Delete</a>
                     <a href="{{route('editUser',$sU->id)}}">Edit</a>
                 </div>
+            @endforeach
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
         </div>
-    @endforeach
     <!-- end Box -->
     </div>
     <!-- end Content -->

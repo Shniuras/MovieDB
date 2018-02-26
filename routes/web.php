@@ -18,6 +18,7 @@ Route::get('/actors', 'ActorsController@index')->name('actors');
 //Add
 Route::get('/addActor', 'ActorsController@add')->name('addActor')->middleware('auth');
 Route::post('/storeActor', 'ActorsController@store')->name('storeActor')->middleware('auth');
+Route::post('/storePicture/{id}', 'ActorsController@storePicture')->name('storePicture')->middleware('auth');
 //Single
 Route::get('/singleActor/{id}', 'ActorsController@single')->name('singleActor');
 //Delete

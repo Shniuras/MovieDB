@@ -15,7 +15,7 @@
             <!-- Movie -->
             <div class="movie">
                 <div class="movie-image">
-                    <form action="{{route('updateActor',$edit->id)}}" method="post">
+                    <form action="{{route('updateActor',$edit->id)}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="text" name="name" value="{{$edit->name}}">
                         <input type="text" name="birthday" value="{{$edit->birthday}}">
@@ -26,7 +26,8 @@
                                 <input type="checkbox" name="movie_id[]" value="{{$sM->id}}">{{$sM->name}}
                             @endif
                         @endforeach
-                        <input type="submit">
+                        <input type="file" name="file">
+                        <input type="submit" value="Edit">
                     </form>
                 </div>
             </div>

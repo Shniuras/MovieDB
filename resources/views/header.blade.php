@@ -31,15 +31,27 @@
                 <li><a href="{{route('actors')}}">ACTORS</a></li>
                 <li><a href="{{route('movies')}}">MOVIES</a></li>
                 <li><a href="{{route('categories')}}">CATEGORIES</a></li>
-                @auth
+                @can('admin')
                 <li><a href="{{route('users')}}">USERS</a></li>
                 <li><a href="{{route('addUser')}}">ADD USER</a></li>
-                <li><a href="{{route('addActor')}}">ADD ACTOR</a></li>
                 <li><a href="{{route('addMovie')}}">ADD MOVIE</a></li>
                 <li><a href="{{route('addCategory')}}">ADD CATEGORY</a></li>
-                @endauth
+                <li><a href="{{route('addActor')}}">ADD ACTOR</a></li>
+                @endcan
+                @guest
                 <li><a href="{{route('login')}}">LOGIN</a></li>
-                <li><a href="{{route('logout')}}">LOGOUT</a></li>
+                @endguest
+                <li><a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    LOGOUT
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                </li>
+
             </ul>
         </div>
         <!-- end Navigation -->

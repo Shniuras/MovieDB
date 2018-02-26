@@ -59,17 +59,16 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
-
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right">Role</label>
-
                                     <div class="col-md-6">
-                                        <select name="role" class="form-control" disabled>
-                                            <option value="admin">{{$showUser->role}}</option>
+                                        <select name="role" class="form-control">
+                                            @foreach($showRole as $sR)
+                                            <option @if($showUser->role == $sR->role) selected="selected" @endif>{{$sR->role}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
