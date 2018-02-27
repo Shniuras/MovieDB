@@ -11,12 +11,14 @@
                 <p class="text-right"><a href="#"></a></p>
             </div>
             <!-- Movie -->
+            @foreach($showImage as $sI)
             <div class="movie">
                 <div class="movie-image">
-                    <span class=""></span><img src="{{URL::asset('storage/' . $showSingle->images()->first()->filename)}}" />
+                    <span class=""></span><img src="{{URL::asset('storage/' . $sI->filename)}}" />
                 </div>
             </div>
             <div>
+            @endforeach
                 <div>
                     <p>Name:  {{$showSingle->name}}</p>
                     <p>Year: {{$showSingle->year}}</p>
@@ -28,6 +30,15 @@
                 <br>
                 <br>
                 @auth
+                    <label>Add More Movie Pictures:</label>
+                    <form action="{{route('storeMoviePicture', $showSingle->id)}}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="file" name="file">
+                        <br>
+                        <input type="submit">
+                    </form>
+                    <br>
+                    <br>
                     <a href="{{route('deleteMovie',$showSingle->id)}}">Delete</a>
                     <a href="{{route('editMovie',$showSingle->id)}}">Edit</a>
                 @endauth

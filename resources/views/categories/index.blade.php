@@ -22,12 +22,12 @@
                     <a href="{{route('editCategory', $sC->id)}}">Edit</a>
                         @endauth
                 </div>
-
+            @endforeach
 
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
         </div>
-    @endforeach
+
     <!-- end Box -->
     </div>
     <!-- end Content -->

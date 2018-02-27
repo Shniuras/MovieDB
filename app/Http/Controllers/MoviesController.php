@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actor;
 use App\Category;
 use App\Http\Requests\StoreMovieRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
@@ -21,7 +22,13 @@ class MoviesController extends Controller
         $showSingle = Movie::findOrFail($id);
         $showCategory = $showSingle->category;
         $showActors = $showSingle->actors;
-        return view('movies.single',['showSingle' => $showSingle, 'showCategory' => $showCategory, 'showActors' => $showActors]);
+        $showImage = $showSingle->images;
+        return view('movies.single',[
+            'showSingle'    => $showSingle,
+            'showCategory'  => $showCategory,
+            'showActors'    => $showActors,
+            'showImage'     => $showImage
+            ]);
     }
 
     public function add(){
@@ -36,6 +43,14 @@ class MoviesController extends Controller
         $actor_movie->actors()->attach($request->actor_id);
         $actor_movie->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
         return redirect()->route('movies');
+    }
+
+    public function storePicture(StoreUserRequest $request, $id)
+    {
+        $user = Auth::user();
+        $movie = Movie::findOrFail($id);
+        $movie->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
+        return redirect()->route('singleMovie',$id);
     }
 
     public function delete($id){

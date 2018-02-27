@@ -43,7 +43,7 @@ class ActorsController extends Controller
         $user = Auth::user();
         $actor = Actor::findOrFail($id);
         $actor->images()->create(['filename' => basename($request->file('file')->storePublicly('public')), 'user_id' => $user->id]);
-        return redirect()->route('actors');
+        return redirect()->route('singleActor',$id);
     }
 
     public function single($id){

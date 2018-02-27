@@ -32,6 +32,7 @@ Route::get('/movies', 'MoviesController@index')->name('movies');
 //Add
 Route::get('/addMovie', 'MoviesController@add')->name('addMovie')->middleware('auth');
 Route::post('/storeMovie', 'MoviesController@store')->name('storeMovie')->middleware('auth');
+Route::post('/storeMoviePicture/{id}', 'MoviesController@storePicture')->name('storeMoviePicture')->middleware('auth');
 //Single
 Route::get('/singleMovie/{id}', 'MoviesController@single')->name('singleMovie');
 //Delete
@@ -65,6 +66,10 @@ Route::get('/deleteUser/{id}', 'UserController@delete')->name('deleteUser')->mid
 //Edit
 Route::get('/editUser/{id}', 'UserController@edit')->name('editUser');
 Route::post('/updateUser', 'UserController@edit')->name('updateUser');
+
+////Facebook Login Route
+Route::get('/fb/login', 'FacebookController@redirect')->name('fb.redirect');
+Route::get('/fb/callback', 'FacebookController@callback')->name('fb.callback');
 
 
 Auth::routes();
